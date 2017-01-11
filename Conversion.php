@@ -16,31 +16,32 @@ abstract class Conversion
 
     //strings storing the value from the unit dropdowns
 
-    protected $_toUnit;
+
 
     //calculated conversion
     protected $_converted;
 
     //constructor
-    function __construct($temperature, $toUnit)
+    function __construct($temperature)
     {
         $this->_temperatureValue = $temperature;
-        $this->_toUnit = $toUnit;
+
     }
 
     //methods
     /**
+     * @param string $toUnit
      * @return string
      */
-    public function Convert(){
-        if ($this->_toUnit == 'fahrenheit'){
+    public function Convert($toUnit){
+        if ($toUnit == 'fahrenheit'){
             $this->_converted = $this->ToFahrenheit();
 
         }
-        if ($this->_toUnit == 'kelvin'){
+        if ($toUnit == 'kelvin'){
             $this->_converted = $this->ToKelvin();
         }
-        if ($this->_toUnit == 'celsius'){
+        if ($toUnit == 'celsius'){
             $this->_converted = $this->ToCelsius();
         }
 
