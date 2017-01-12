@@ -8,19 +8,28 @@
  */
 class Fahrenheit extends Conversion
 {
-
+    /* this returns the same value the user entered*/
     function ToFahrenheit()
     {
-        // TODO: Implement ToFahrenheit() method.
+        return $this->_temperatureValue;
     }
-
+    /*converts fahernheit to kelvin
+    conversion formula T(k) = (T(f) + 459.67) * .555
+    K = 5/9 (° F - 32) + 273
+    return string $result */
     function ToKelvin()
     {
-        // TODO: Implement ToKelvin() method.
+        $kelvin = ($this->_temperatureValue + 459.67) * 5/9;
+        $result = number_format($kelvin, 2);
+        return $result;
     }
-
+    /* this converts fahrenheit to celcius
+    conversion formuls T(C)= (T(f)-32) /1.8
+    returns string $result*/
     function ToCelsius()
     {
-        // TODO: Implement ToCelsius() method.
+        $celsius = ($this->_temperatureValue - 32) /1.8;
+        $result = number_format($celsius, 2);
+        return $result;
     }
 }

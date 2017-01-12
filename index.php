@@ -9,15 +9,21 @@
  */
 require 'Conversion.php';
 require 'Celsius.php';
-//validate user input
+require 'Fahrenheit.php';
+require 'Kelvin.php';
+//@todo validate user input
 
 //store user input in variables
 if($_POST){
-    echo var_dump($_POST);
+//    echo var_dump($_POST);
     $temperature = $_POST['temperatureValue'];
     $fromUnit = $_POST['fromUnit'];
     $toUnit = $_POST['toUnit'];
-
+}else {
+    $temperature = 0;
+    $fromUnit='';
+    $toUnit = '';
+    $conversionValue_formatted = '';
 }
 
 //create the appropriate object
@@ -25,12 +31,23 @@ switch ($fromUnit){
     case 'celsius':
         $fromCelsius = new Celsius($temperature);
         $conversionValue = $fromCelsius->Convert($toUnit);
-        echo $conversionValue;
+//        echo $conversionValue;
         break;
-    //@todo implement the rest of the cases
+    case 'fahrenheit':
+        $fromFahrenheit = new Fahrenheit($temperature);
+        $conversionValue = $fromFahrenheit->Convert($toUnit);
+//        echo $conversionValue;
+        break;
+    case 'kelvin':
+        $fromKelvin = new Kelvin ($temperature);
+        $conversionValue = $fromKelvin->Convert($toUnit);
+//        echo $conversionValue;
+        break;
 }
 
 //display the result to the user
+if (isset($conversionValue))
+$conversionValue_formatted = $temperature . ' ' . $fromUnit . ' = ' . $conversionValue .' '. $toUnit;
 
 ?>
 
@@ -38,9 +55,12 @@ switch ($fromUnit){
 <html>
 <head>
     <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="wrapper">
 <h1>Temperature Converter</h1>
+    <div id="theForm">
 <form method="post" action="index.php">
     <input type="text" name="temperatureValue">
     <select name="fromUnit">
@@ -54,13 +74,16 @@ switch ($fromUnit){
         <option value="fahrenheit">Fahrenheit</option>
         <option value="kelvin">Kelvin</option>
     </select>
-    <input type="text" name="conversionValue" value="" disabled>
     <input type="submit" value="Convert">
+    </div>
+    <p><?php echo $conversionValue_formatted ?></p>
     <p>A placeholder for error message</p>
 
 
 </form>
+</div>
 </body>
 
 </html>
+
 
