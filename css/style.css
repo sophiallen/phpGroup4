@@ -4,8 +4,9 @@
 }
 
 #wrapper {
-    margin: 20px auto;
+    margin: 5% auto;
     width: 68.4%;
+    
     background-color: white;
     box-shadow: 5px 5px 2px 1px #888888;
     border: solid grey 1px;
