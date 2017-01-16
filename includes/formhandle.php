@@ -1,12 +1,19 @@
 <?php
 
+//declare variables and initialize them
+$conversionValue = 0;
+$conversionValue_formatted = '';
+$error_message ='';
+
 //store user input in variables
-if($_POST){
+if ($_POST) {
 
     //validate input. If use enters invalid input, default value of 0 is used and error message displayed. 
-    $temperature = filter_input(INPUT_POST, 'temperatureValue');
+    $temperature = filter_input(INPUT_POST, 'temperatureValue', FILTER_VALIDATE_FLOAT);
 
-    if ($temperature === FALSE || !is_numeric($temperature)){
+    if ($temperature === FALSE || !is_numeric($temperature)) {
+
+        $conversionValue_formatted = '';
         $error_message = "Please make sure the temperature you entered is a valid number.";
         $temperature = 0;
     }
@@ -21,26 +28,23 @@ if($_POST){
 }
 
 //create the appropriate object
-switch ($fromUnit){
+
+switch ($fromUnit) {
     case 'celsius':
         $fromCelsius = new Celsius($temperature);
         $conversionValue = $fromCelsius->Convert($toUnit);
-//        echo $conversionValue;
         break;
     case 'fahrenheit':
         $fromFahrenheit = new Fahrenheit($temperature);
         $conversionValue = $fromFahrenheit->Convert($toUnit);
-//        echo $conversionValue;
         break;
     case 'kelvin':
         $fromKelvin = new Kelvin ($temperature);
         $conversionValue = $fromKelvin->Convert($toUnit);
-//        echo $conversionValue;
         break;
 }
 
-//display the result to the user
-if (isset($conversionValue))
+//display the result to the user if validation filter passes and returns a number(double).
+//from the PHP manual: for historical reasons "double" is returned in case of a float, and not simply "float"
+if (gettype($temperature) == "double")
 $conversionValue_formatted = $temperature . ' ' . $fromUnit . ' = ' . $conversionValue .' '. $toUnit;
-
-?>
