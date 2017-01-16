@@ -6,12 +6,14 @@ $conversionValue_formatted = '';
 $error_message ='';
 
 //store user input in variables
-if ($_POST) {
+if ($_POST) 
+{
 
     //validate input. If use enters invalid input, default value of 0 is used and error message displayed. 
     $temperature = filter_input(INPUT_POST, 'temperatureValue', FILTER_VALIDATE_FLOAT);
 
-    if ($temperature === FALSE || !is_numeric($temperature)) {
+    if ($temperature === FALSE || !is_numeric($temperature)) 
+    {
 
         $conversionValue_formatted = '';
         $error_message = "Please make sure the temperature you entered is a valid number.";
@@ -20,7 +22,9 @@ if ($_POST) {
 
     $fromUnit = $_POST['fromUnit'];
     $toUnit = $_POST['toUnit'];
-}else {
+}
+else 
+{
     $temperature = 0;
     $fromUnit='';
     $toUnit = '';
@@ -29,7 +33,8 @@ if ($_POST) {
 
 //create the appropriate object
 
-switch ($fromUnit) {
+switch ($fromUnit) 
+{
     case 'celsius':
         $fromCelsius = new Celsius($temperature);
         $conversionValue = $fromCelsius->Convert($toUnit);
