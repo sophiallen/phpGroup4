@@ -7,11 +7,11 @@ require 'includes/Kelvin.php';
 require 'includes/formhandle.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Temperature Converter</title>
+
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font-awesome.css">
@@ -38,7 +38,6 @@ require 'includes/formhandle.php';
   <br/> <br/>
     <h3><i><?php echo $conversionValue_formatted ?></i></h3>
     <h4 class="error"><?php echo htmlspecialchars($error_message); ?></h4>
-
 </form>
 
     <footer>

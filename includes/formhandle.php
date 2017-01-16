@@ -1,4 +1,5 @@
 <?php
+
 //declare variables and initialize them
 $conversionValue = 0;
 $conversionValue_formatted = '';
@@ -27,6 +28,7 @@ if ($_POST) {
 }
 
 //create the appropriate object
+
 switch ($fromUnit) {
     case 'celsius':
         $fromCelsius = new Celsius($temperature);
@@ -46,6 +48,3 @@ switch ($fromUnit) {
 //from the PHP manual: for historical reasons "double" is returned in case of a float, and not simply "float"
 if (gettype($temperature) == "double")
 $conversionValue_formatted = $temperature . ' ' . $fromUnit . ' = ' . $conversionValue .' '. $toUnit;
-
-
-

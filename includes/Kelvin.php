@@ -11,14 +11,15 @@ conversion formula T(f) = T(K) *1.8 - 459.67
 @return string $result*/
 class Kelvin extends Conversion
 {
+
     public function toFahrenheit()
     {
         $fahrenheit = $this->_temperatureValue * 1.8 - 459.67;
         $result = number_format($fahrenheit, 2);
         return $result;
-
     }
     /* this returns the same value the user entered*/
+
     public function toKelvin()
     {
         return $this->_temperatureValue;
@@ -26,6 +27,7 @@ class Kelvin extends Conversion
     /* converts Kelvin to celsius
     conversion formula T(c)= T(k) - 273.15
     return string $result*/
+
     public function toCelsius()
     {
         $celsius = $this->_temperatureValue - 273.15;

@@ -9,7 +9,9 @@
 class Fahrenheit extends Conversion
 {
     /* this returns the same value the user entered*/
+
     public function toFahrenheit()
+
     {
         return $this->_temperatureValue;
     }
@@ -17,6 +19,7 @@ class Fahrenheit extends Conversion
     conversion formula T(k) = (T(f) + 459.67) * .555
     K = 5/9 (° F - 32) + 273
     return string $result */
+
     public function toKelvin()
     {
         $kelvin = ($this->_temperatureValue + 459.67) * 5/9;
@@ -26,6 +29,7 @@ class Fahrenheit extends Conversion
     /* this converts fahrenheit to celcius
     conversion formuls T(C)= (T(f)-32) /1.8
     returns string $result*/
+
     public function toCelsius()
     {
         $celsius = ($this->_temperatureValue - 32) /1.8;
