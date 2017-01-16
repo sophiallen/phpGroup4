@@ -22,7 +22,7 @@ abstract class Conversion
     protected $_converted;
 
     //constructor
-    function __construct($temperature)
+     public function __construct($temperature)
     {
         $this->_temperatureValue = $temperature;
 
@@ -34,22 +34,22 @@ abstract class Conversion
      * @return string
      */
     public function Convert($toUnit){
-        if ($toUnit == 'fahrenheit'){
-            $this->_converted = $this->ToFahrenheit();
+        if ($toUnit == 'fahrenheit') {
+            $this->_converted = $this->toFahrenheit();
 
         }
-        if ($toUnit == 'kelvin'){
-            $this->_converted = $this->ToKelvin();
+        if ($toUnit == 'kelvin') {
+            $this->_converted = $this->toKelvin();
         }
-        if ($toUnit == 'celsius'){
-            $this->_converted = $this->ToCelsius();
+        if ($toUnit == 'celsius') {
+            $this->_converted = $this->toCelsius();
         }
 
         return $this->_converted;
 
     }
 
-    abstract function ToFahrenheit();
-    abstract function ToKelvin();
-    abstract function ToCelsius();
+    abstract public function toFahrenheit();
+    abstract public function toKelvin();
+    abstract public function toCelsius();
 }

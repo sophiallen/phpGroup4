@@ -1,12 +1,12 @@
 <?php
 
 //store user input in variables
-if($_POST){
+if ($_POST) {
 
     //validate input. If use enters invalid input, default value of 0 is used and error message displayed. 
     $temperature = filter_input(INPUT_POST, 'temperatureValue');
 
-    if ($temperature === FALSE || !is_numeric($temperature)){
+    if ($temperature === FALSE || !is_numeric($temperature)) {
         $error_message = "Please make sure the temperature you entered is a valid number.";
         $temperature = 0;
     }
@@ -21,7 +21,7 @@ if($_POST){
 }
 
 //create the appropriate object
-switch ($fromUnit){
+switch ($fromUnit) {
     case 'celsius':
         $fromCelsius = new Celsius($temperature);
         $conversionValue = $fromCelsius->Convert($toUnit);
@@ -43,4 +43,4 @@ switch ($fromUnit){
 if (isset($conversionValue))
 $conversionValue_formatted = $temperature . ' ' . $fromUnit . ' = ' . $conversionValue .' '. $toUnit;
 
-?>
+
